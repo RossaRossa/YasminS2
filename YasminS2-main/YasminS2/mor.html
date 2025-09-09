@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Como Eu Amo Você</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: #333;
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
+            min-height: 100vh;
+            animation: backgroundAnimation 30s infinite alternate;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .tab-button {
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            padding: 15px 25px;
+            margin: 0 10px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+            color: #d23669;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .tab-button:hover {
+            background-color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .tab-button.active {
+            background-color: #ff4757;
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+            position: relative;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes backgroundAnimation {
+            0% { background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%); }
+            25% { background: linear-gradient(135deg, #ff6b6b 0%, #ff9a9e 100%); }
+            50% { background: linear-gradient(135deg, #fad0c4 0%, #ff6b81 100%); }
+            75% { background: linear-gradient(135deg, #ff9a9e 0%, #ff6b6b 100%); }
+            100% { background: linear-gradient(135deg, #ff6b81 0%, #fad0c4 100%); }
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .main-tab {
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+        
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #d23669;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .love-message {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            position: relative;
+            z-index: 2;
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .love-message p {
+            margin-bottom: 20px;
+        }
+        
+        .photos-tab {
+            padding: 20px;
+            position: relative;
+        }
+        
+        .photos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .photo-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 300px;
+            transition: all 0.3s;
+            background-color: white;
+        }
+        
+        .photo-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .photo-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            color: white;
+            padding: 15px;
+            font-style: italic;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .photo-item:hover .photo-caption {
+            transform: translateY(0);
+        }
+        
+        .letters-tab {
+            background-color: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .letter {
+            margin-bottom: 40px;
+            padding: 30px;
+            border-radius: 15px;
+            background: linear-gradient(to right, #fff9f9, #ffe6e6);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .letter:hover {
+            transform: translateY(-5px);
+        }
+        
+        .letter::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #ff4757, #d23669);
+        }
+        
+        .letter:last-child {
+            margin-bottom: 0;
+        }
+        
+        .letter-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: #d23669;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .letter-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .letter-content p {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .letter-content p::before {
+            content: "❤";
+            position: absolute;
+            left: 0;
+            top: 5px;
+            color: #ff4757;
+        }
+        
+        .poem-tab {
+            background-color: #fff9f9;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: 30px auto;
+            border: 2px dashed #ff9a9e;
+            display: none;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.5s ease-out;
+        }
+        
+        .poem-tab.revealed {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .poem-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: #d23669;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .poem {
+            font-style: italic;
+            line-height: 2;
+            text-align: center;
+        }
+        
+        .poem p {
+            margin-bottom: 15px;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: #ff4757;
+            animation: float 6s ease-in-out infinite;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+        
+        .poem-heart {
+            position: absolute;
+            font-size: 2rem;
+            color: #ff4757;
+            animation: float 8s ease-in-out infinite;
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .poem-container {
+            position: relative;
+            margin: 100px auto;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .poem-revealed .poem-heart {
+            opacity: 0.8;
+        }
+        
+        .secret-heart {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            font-size: 2rem;
+            color: #ff4757;
+            animation: pulse 2s infinite, floatAround 15s infinite alternate;
+            cursor: pointer;
+            z-index: 100;
+            opacity: 0.9;
+            transition: all 0.3s;
+        }
+        
+        .secret-heart:hover {
+            transform: scale(1.2);
+            opacity: 1;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(10px, -20px) rotate(5deg); }
+            50% { transform: translate(-5px, 10px) rotate(-3deg); }
+            75% { transform: translate(15px, -10px) rotate(7deg); }
+        }
+        
+        @keyframes floatAround {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(20px, 30px) rotate(10deg); }
+            50% { transform: translate(-30px, 20px) rotate(-5deg); }
+            75% { transform: translate(10px, -20px) rotate(5deg); }
+            100% { transform: translate(-20px, -30px) rotate(-10deg); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+        
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+            animation: confetti-fall 5s linear forwards;
+            z-index: 1000;
+        }
+        
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-button {
+                margin: 5px 0;
+                width: 80%;
+            }
+            
+            .photos {
+                grid-template-columns: 1fr;
+            }
+            
+            .love-tab, .poem-tab, .letters-tab {
+                padding: 25px;
+            }
+            
+            .secret-heart {
+                top: 20px;
+                right: 20px;
+                font-size: 1.8rem;
+            }
+            
+            .love-message {
+                padding: 20px;
+            }
+            
+            .poem-container {
+                margin: 50px auto;
+            }
+            
+            .letter {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="secret-heart" id="secret-heart">❤️</div>
+        
+        <div class="tabs">
+            <button class="tab-button active" data-tab="main">Como Eu Amo Você</button>
+            <button class="tab-button" data-tab="photos">Nossas Fotos</button>
+            <button class="tab-button" data-tab="letters">Minhas Cartas</button>
+        </div>
+        
+        <div class="tab-content active" id="main-tab">
+            <div class="main-tab">
+                <h1>Como Eu Amo Você</h1>
+                <div class="love-message">
+                    <p>Meu Deus, e você falando que eu sou lindo, olha pra isso, olha pra esse colírio para os olhos, que perfeição toda é essa, pqp eu te amo, você é linda de mais, uma fofa, uma Deusa, que amorzinhoooooooooo!</p>
+                    
+                    <p>Olha esses olhos, meu Deus, mais lindo que todas as estrelas do universo inteiro juntas, mais lindo que a lua, um brilho que me hipnotiza de tanta paixão, devia ser proibido você sair de casa com tanta beleza exalando de você.</p>
+                    
+                    <p>Com um olhar tão doce, tão acolhedor e hipnotizador, além desse cabelão, essa trança linda, sempre uma fofa, cabelo solto, liso cacheadinho, de franja, você fica tão linda mas essa trança mds deu um toque nesta foto q krlh, vontade de morder você por inteira, morder beijar e muito mais.</p>
+                    
+                    <p>E eu falei dos seus olhos mas o seu óculos mds realçou a beleza deles de um jeito que você não tem noção, chega a ser ridículo de tão perdido eu fico no seu olhar, você fica linda de todo jeito, esse braço lindo ótimo pra dar uma mordida, o colar combinando com o óculos, o brinco mais simples, esses lábios, MEU DEUS ESSES LÁBIOS, me deixa doidinho pra beijar você sem parar por horas, dias, até desmaiar pq plmds que perfeita!</p>
+                    
+                    <p>Que lindeza, que fofura, tão maravilhosa, mais que as melodias de Beethoven, qualquer obra de Van Gogh, pintura de Leonardo da Vinci ou Michelangelo, muito mais deslumbrante que qualquer composição de Mozart.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="photos-tab">
+            <div class="photos-tab">
+                <div class="photos" id="photos-container"></div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="letters-tab">
+            <div class="letters-tab">
+                <div class="letter">
+                    <h2 class="letter-title">Carta 1</h2>
+                    <div class="letter-content">
+                        <p>A 8ª maravilha do mundo você não é porque você está em 1° lugar e é somente minha, não do mundo, você não tem noção do quão linda você está e é, meu amor do céu, impossível não me apaixonar por você.</p>
+                        
+                        <p>A cada segundo que olho pra você ou pra uma foto tão bela com essa ou qualquer outra sua eu me apaixono e me vicio mais e mais, até porque né, você fica perfeita de qualquer maneira, em qualquer foto ou vídeo, é de dar inveja de tanta beleza acumulada em um só ser, uma única mulher.</p>
+                        
+                        <p>Mas agradeço pois essa é minha mulher, todinha e unicamente minha, o amor da minha vida, razão das minhas risadas mais sinceras, do meu sorriso mais bobo, dos meus picos de energia e da minha felicidade mais pura.</p>
+                        
+                        <p>Você é a razão de tudo pra mim, sem você nada tem sentido, NADA, sem você não sou absolutamente NADA, eu te quero, te desejo, te amo, anseio por você, suplico pela sua companhia pois eu quero ficar sempre ao seu lado, 100% do tempo.</p>
+                        
+                        <p>Você é um sonho que se tornou realidade, tudo que eu sempre quis e muito mais, eu quero você comigo a vida inteira, quero poder chorar olhando pra você chegando no altar, pronto pra dizer aceito, ansioso pelo "pode beijar a noiva" doido pra te pegar no colo e levar pra nossa casa no final da celebração, só eu e você, aproveitando cada dia juntos, não só morando juntos mas sim VIVENDO juntos.</p>
+                    </div>
+                </div>
+                
+                <div class="letter">
+                    <h2 class="letter-title">Carta 2</h2>
+                    <div class="letter-content">
+                        <p>Oi amor, queria te dedicar esta carta para dizer, eu morro de saudade de você sempre que você vai pra casa, a partir do momento que não estou sentindo você em meus braços ou não estou vendo seu rosto lindo eu já sinto saudades.</p>
+                        
+                        <p>A gente vai viver nossa vida inteira juntos mas nunca vai ser nada comparado ao tanto que eu sinto sua falta sempre que estamos separados, eu sempre quero estar com você e sempre estarei, independente da situação, sempre ficarei contigo pra te proteger e amar.</p>
+                        
+                        <p>Você uma vez disse que não precisaria pois é independente e empoderada, não falo que você não é mas apenas falo, você não precisa ser durona ok? Eu to aqui pra o que der e vier, se alguma pessoa te incomodar, não precisa se preocupar, eu apareço na hora pra te proteger, defender e ajudar no que for preciso.</p>
+                        
+                        <p>Você escolheu me amar e é minha escolha mostrar que fez certo em confiar seu amor a mim, nunca irá se arrepender de ter me escolhido, vou fazer com que você se sinta a mulher mais bela, fofa, carinhosa e mais importante do mundo, pois você é, independente do que os outros digam.</p>
+                    </div>
+                </div>
+                
+                <div class="letter">
+                    <h2 class="letter-title">Carta 3</h2>
+                    <div class="letter-content">
+                        <p>Eu gostaria de começar falando para você que eu amo você horrores, você sempre foi super gentil comigo, sempre me faz me sentir o melhor homem do mundo, me faz me sentir super bem sempre, me deixa muito feliz toda vez que falo contigo, toda vez que vejo sua mensagem, toda vez que vejo você, sempre.</p>
+                        
+                        <p>Qualquer momento que eu se quer pense em você, eu fico ridiculamente feliz, bobinho e sempre abro um sorriso, o mais sincero que eu já dei, você me faz tão bem, mais ao mesmo tempo me deixa mal e super triste porque você mora lá longe e não comigo.</p>
+                        
+                        <p>Eu queria poder te ver sempre, todo dia 100% do tempo, eu fico chorando de saudade de você amor, agora que você foi pro acampamento então, to muito mal, sem poder te ver, sem poder sentir seu abraço, sem sentir seu cheiro, seu beijo, ouvir sua voz pessoalmente, eu tô morrendo de saudades de você por inteira.</p>
+                        
+                        <p>Eu quero você comigo sempre, eu te digo, você é uma fofa, tem um sorriso maravilhoso e lindo, uma risada ridiculamente fofa que como você sabe, sempre me quebra e me deixa besta, um puta corpão lindo e seduzente, uma voz fofa mas ao mesmo tempo sedutora, olhos que me hipnotizam e muito mais.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="poem-container" id="poem-container">
+            <div class="poem-tab" id="poem-tab">
+                <h2 class="poem-title">Poema Para Você</h2>
+                <div class="poem">
+                    <p>Nos teus olhos encontro o meu abrigo,</p>
+                    <p>No teu sorriso, o meu maior perigo.</p>
+                    <p>Pois quando sorris, perco o meu juízo,</p>
+                    <p>E encontro em ti todo o meu paraíso.</p>
+                    <br>
+                    <p>Teu amor é brisa que acalma a alma,</p>
+                    <p>É fogo que arde sem nenhuma calma.</p>
+                    <p>É doce mel que adoça meus dias,</p>
+                    <p>É poesia que se faz em melodias.</p>
+                    <br>
+                    <p>Quero contigo construir minha história,</p>
+                    <p>Viver contigo toda a nossa glória.</p>
+                    <p>Te amarei hoje, amanhã e sempre,</p>
+                    <p>Até que as estrelas deixem de ser luminescentes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    button.classList.add('active');
+                    
+                    const tabId = button.getAttribute('data-tab');
+                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                });
+            });
+            
+            const photos = [
+                {
+                    src: 'IMG-20250412-WA0132(1).jpg', 
+                    caption: 'Nosso primeiro encontro inesquecível'
+                },
+                {
+                    src: 'IMG-20250724-WA0031.jpg', 
+                    caption: 'Amo cada momento ao seu lado'
+                },
+                {
+                    src: 'IMG-20250612-WA0261.jpg', 
+                    caption: 'Seu sorriso ilumina meus dias'
+                },
+                {
+                    src: 'IMG-20250525-WA0035.jpg', 
+                    caption: 'Nosso amor cresce a cada dia'
+                },
+                {
+                    src: 'IMG-20250628-WA0051.jpg',
+                    caption: 'Sou a pessoa mais sortuda do mundo'
+                },
+                {
+                    src: 'IMG-20250516-WA0046.jpg', 
+                    caption: 'Prometo te amar para sempre'
+                },
+                {
+                    src: 'IMG-20250226-WA0027.jpeg', 
+                    caption: 'Momento especial que guardo no coração'
+                },
+                {
+                    src: 'IMG_20250703_072345_645.webp', 
+                    caption: 'Eternamente grato por ter você'
+                }
+            ];
+            
+            const photosContainer = document.getElementById('photos-container');
+            
+            photos.forEach(photo => {
+                const photoItem = document.createElement('div');
+                photoItem.className = 'photo-item';
+                photoItem.innerHTML = `
+                    <img src="${photo.src}" alt="${photo.caption}" loading="lazy">
+                    <div class="photo-caption">${photo.caption}</div>
+                `;
+                photosContainer.appendChild(photoItem);
+            });
+            
+            const secretHeart = document.getElementById('secret-heart');
+            const poemTab = document.getElementById('poem-tab');
+            const poemContainer = document.getElementById('poem-container');
+            
+            secretHeart.addEventListener('click', function() {
+                poemTab.style.display = 'block';
+                setTimeout(() => {
+                    poemTab.classList.add('revealed');
+                    poemContainer.classList.add('poem-revealed');
+                }, 10);
+                
+                createConfetti();
+                createPoemHearts();
+                createFloatingHearts(10); // Adiciona mais corações
+                
+                poemContainer.scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            createFloatingHearts(24);
+        });
+        
+        function createFloatingHearts(count) {
+            for (let i = 0; i < count; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerHTML = '❤️';
+                
+                // Posições aleatórias
+                const top = Math.random() * 100;
+                const left = Math.random() * 100;
+                
+                // Tamanhos aleatórios
+                const sizes = ['1.3rem', '1.5rem', '1.7rem', '1.9rem', '2.1rem'];
+                const size = sizes[Math.floor(Math.random() * sizes.length)];
+                
+                // Cores em degradê
+                const colors = ['#ff4757', '#ff6b81', '#ff6348', '#ffa502', '#eccc68'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Atrasos aleatórios
+                const delay = Math.random() * 5;
+                
+                heart.style.top = `${top}%`;
+                heart.style.left = `${left}%`;
+                heart.style.fontSize = size;
+                heart.style.color = color;
+                heart.style.animationDelay = `${delay}s`;
+                
+                document.body.appendChild(heart);
+            }
+        }
+        
+        function createPoemHearts() {
+            const poemContainer = document.getElementById('poem-container');
+            
+            for (let i = 0; i < 12; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'poem-heart';
+                heart.innerHTML = '❤️';
+                
+                // Posições aleatórias ao redor do poema
+                const positions = [
+                    { top: '-30px', left: `${Math.random() * 100}%` },
+                    { top: `${Math.random() * 100}%`, left: '-40px' },
+                    { top: `${Math.random() * 100}%`, left: 'calc(100% + 20px)' },
+                    { top: 'calc(100% + 10px)', left: `${Math.random() * 100}%` }
+                ];
+                
+                const pos = positions[Math.floor(Math.random() * positions.length)];
+                
+                // Tamanhos aleatórios
+                const sizes = ['1.8rem', '2rem', '2.2rem', '2.4rem', '2.6rem'];
+                const size = sizes[Math.floor(Math.random() * sizes.length)];
+                
+                // Cores em degradê
+                const colors = ['#ff4757', '#ff6b81', '#ff6348', '#ffa502', '#eccc68'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Atrasos aleatórios
+                const delay = Math.random() * 5;
+                
+                heart.style.top = pos.top;
+                heart.style.left = pos.left;
+                heart.style.fontSize = size;
+                heart.style.color = color;
+                heart.style.animationDelay = `${delay}s`;
+                
+                poemContainer.appendChild(heart);
+            }
+        }
+        
+        function createConfetti() {
+            const colors = ['#ff4757', '#ff6b81', '#ff6348', '#ffa502', '#eccc68', '#2ed573', '#1dd1a1', '#2e86de', '#5f27cd', '#a55eea'];
+            
+            for (let i = 0; i < 150; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                
+                // Posição horizontal aleatória
+                confetti.style.left = Math.random() * 100 + 'vw';
+                
+                // Cor aleatória
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Tamanho aleatório
+                confetti.style.width = Math.random() * 10 + 5 + 'px';
+                confetti.style.height = Math.random() * 10 + 5 + 'px';
+                
+                // Duração aleatória
+                confetti.style.animationDuration = Math.random() * 3 + 2 + 's';
+                
+                // Atraso aleatório
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, 7000);
+            }
+        }
+    </script>
+</body>
+</html>
